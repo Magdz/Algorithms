@@ -1,5 +1,6 @@
 package binarytree;
 
+import static java.lang.Integer.max;
 import java.util.*;
 
 /**
@@ -161,5 +162,12 @@ public class BinaryTree {
         BinaryTree Right=new BinaryTree();
         Right.root=root.right;
         return Right;
+    }
+    
+    public int Level(){
+        if(root==null)return 0;
+        BinaryTree Left=LeftTree(root);
+        BinaryTree Right=RightTree(root);
+        return max(1+Left.Level(),1+Right.Level());
     }
 }

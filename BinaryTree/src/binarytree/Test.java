@@ -38,5 +38,19 @@ public class Test {
         T.traverseBreadthFirst();
         System.out.println("");
         T.traverseDepthFirst();
+        
+        BinaryTree St=new BinaryTree();
+        St.addroot(13);
+        St.addleft(St.root, 10);
+        St.addright(St.root, 25);
+        St.addleft(St.root.left, 2);
+        St.addright(St.root.left, 12);
+        St.addleft(St.root.right, 20);
+        St.addright(St.root.right, 31);
+        St.addleft(St.root.right.right, 29);
+        System.out.println("");
+        St.traverseBreadthFirst();
+        System.out.println("");
+        System.out.println("MaxLevel: "+St.Level());
     }   
 }
