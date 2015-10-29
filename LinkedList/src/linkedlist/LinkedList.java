@@ -18,11 +18,11 @@ public class LinkedList {
     }
     
     public int head(){
-        return head.data;
+        return head.getData();
     }
     
     public int tail(){
-        return tail.data;
+        return tail.getData();
     }
     
     public void addHead(int data){
@@ -31,7 +31,7 @@ public class LinkedList {
         else{
             Node Temp=head;
             head=New_Node;
-            head.next=Temp;
+            head.setNext(Temp);
         }
         ++length;
     }
@@ -40,7 +40,7 @@ public class LinkedList {
         Node New_Node=new Node(data);
         if(tail==null)head=tail=New_Node;
         else{
-            tail.next=New_Node;
+            tail.setNext(New_Node);
             tail=New_Node;
         }
         ++length;
@@ -59,34 +59,34 @@ public class LinkedList {
         Node New_Node=new Node(data);
         Node Temp=head;
         for(int i=0;i<index-1;++i){
-            Temp=Temp.next;
+            Temp=Temp.getNext();
         }
-        New_Node.next=Temp.next;
-        Temp.next=New_Node;
+        New_Node.setNext(Temp.getNext());
+        Temp.setNext(New_Node);
         ++length;
     }
     
     public boolean search(int data){
         Node Temp=head;
         while(Temp!=null){
-            if(Temp.data==data)return true;
-            Temp=Temp.next;
+            if(Temp.getData()==data)return true;
+            Temp=Temp.getNext();
         }
         return false;
     }
     
     
     public void removeHead(){
-        head=head.next;
+        head=head.getNext();
         if(head==null)tail=null;
         --length;
     }
     
     public void removeTail(){
         Node Temp=head;
-        while(Temp.next!=tail)Temp=Temp.next;
+        while(Temp.getNext()!=tail)Temp=Temp.getNext();
         tail=Temp;
-        tail.next=null;
+        tail.setNext(null);
         if(tail==null)head=null;
         --length;
     }
@@ -95,9 +95,9 @@ public class LinkedList {
         if(index>=length || index<0)return;
         Node Temp=head;
         for(int i=0;i<index;++i){
-            Temp=Temp.next;
+            Temp=Temp.getNext();
         }
-        Temp.next=Temp.next.next;
+        Temp.setNext(Temp.getNext().getNext());
         --length;
     }
     
@@ -113,9 +113,18 @@ public class LinkedList {
     public void print(){
         Node Current=head;
         for(int i=0;i<length && head!=null ;++i){
-            System.out.print(Current.data+" ");
-            Current=Current.next;
+            System.out.print(Current.getData()+" ");
+            Current=Current.getNext();
         }
         System.out.println("");
+    }
+    
+    public Node getIndex(int index){
+        Node Temp = head;
+        while(Temp!=null && index>0){
+            --index;
+            Temp=Temp.getNext();
+        }
+        return Temp;
     }
 }
