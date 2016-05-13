@@ -1,1 +1,0 @@
-adjacency.matrix.adjMatrix
