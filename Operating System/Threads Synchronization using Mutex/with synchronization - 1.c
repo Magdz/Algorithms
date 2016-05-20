@@ -6,12 +6,16 @@
 
 #define NUM_Loop 10
 
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
 void* print_letter(void *arg){
     char letter = *(char *)arg;
     int i;
+    pthread_mutex_lock(&mutex);
     for(i = 0; i < NUM_Loop; i++){
         printf(" %c", letter);
     }
+    pthread_mutex_unlock(&mutex);
     pthread_exit(NULL);
 }
 
