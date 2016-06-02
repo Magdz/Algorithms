@@ -11,7 +11,7 @@
 public class Test {
 
     public static void main(String[] args) {
-        QuickUnion Q = new QuickUnion(10);
+        WeightedQU Q = new WeightedQU(10);
         Q.union(3, 4);
         Q.union(3, 8);
         Q.union(6, 5);

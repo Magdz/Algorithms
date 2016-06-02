@@ -8,13 +8,13 @@
  *
  * @author Ahmed
  */
-public class QuickUnion {
+public class WeightedQU {
     
     private final int N;
     private final int []id;
     private final int []weight;
     
-    public QuickUnion(int N){
+    public WeightedQU(int N){
         this.N = N;
         id = new int[N];
         weight = new int[N];
