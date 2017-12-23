@@ -1,6 +1,7 @@
 from PIL import Image
 import utilities
 
+
 def retrieve(filename):
 	img = Image.open(filename)
 	binary = ''
@@ -14,7 +15,8 @@ def retrieve(filename):
 				binary = binary + digit
 				if binary[-16:] == utilities.delimiter:
 					text = utilities.bin2str(binary[:-16])
-					return text
-
+					encrypted_msg = tuple([text])
+					decrypted_msg = utilities.decrypt_message('private.pem',encrypted_msg)
+					return decrypted_msg
 
 print(retrieve('hidden.png'))
